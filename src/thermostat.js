@@ -14,3 +14,11 @@ Thermostat.prototype.downButton = function() {
 
   this.temperature -= 1;
 };
+
+Thermostat.prototype.powerSaveOff = function() {
+  this.powerSave = 'OFF';
+};
+
+Thermostat.prototype.powerSaveOn = function() {
+  this.powerSave = 'ON';
+};

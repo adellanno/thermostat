@@ -39,4 +39,14 @@ describe('Thermostat', function() {
   it('should have powersave on by default', function() {
     expect(thermostat.powerSave).toEqual('ON');
   });
+
+  it('should turn powersave off', function() {
+    thermostat.powerSaveOff();
+    expect(thermostat.powerSave).toEqual('OFF');
+  });
+
+  it('should turn powersave on', function() {
+    thermostat.powerSaveOn();
+    expect(thermostat.powerSave).toEqual('ON');
+  });
 });
