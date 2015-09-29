@@ -4,21 +4,32 @@ function Thermostat() {
 };
 
 Thermostat.prototype.upButton = function() {
-  this.temperature += 1;
+  if (this.powerSave == 'ON') {
+    if (this.temperature >= 25) {
+      throw 'Tempature cannot go above 25 in power save mode';
+    }
+  } if (this.powerSave == 'OFF') {
+
+    if (this.temperature >= 32) {
+      throw 'Tempature cannot go above 32 if power saving mode is off';
+    }
+  }
+
+  return this.temperature += 1;
 };
 
 Thermostat.prototype.downButton = function() {
-  if (this.temperature <= 10) {
+  if (this.temperature < 10) {
     throw 'Too cold!';
   }
 
-  this.temperature -= 1;
+  return this.temperature -= 1;
 };
 
 Thermostat.prototype.powerSaveOff = function() {
-  this.powerSave = 'OFF';
+  return this.powerSave = 'OFF';
 };
 
 Thermostat.prototype.powerSaveOn = function() {
-  this.powerSave = 'ON';
+  return this.powerSave = 'ON';
 };

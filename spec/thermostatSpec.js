@@ -20,7 +20,7 @@ describe('Thermostat', function() {
   });
 
   it('should not allow the temp to drop below 10 degrees', function() {
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < 11; i++) {
       thermostat.downButton();
     }
 
@@ -32,8 +32,16 @@ describe('Thermostat', function() {
       thermostat.upButton();
     }
 
-    thermostat.powerSave();
-    expect(function() {thermostat.upButton();}).toThrow('Too hot!');
+    expect(function() {thermostat.upButton();}).toThrow('Tempature cannot go above 25 in power save mode');
+  });
+
+  it('should not allow the temp to go above 32 degrees if power saving mode is off', function() {
+    thermostat.powerSaveOff();
+    for (i = 0; i < 12; i++) {
+      thermostat.upButton();
+    }
+
+    expect(function() {thermostat.upButton();}).toThrow('Tempature cannot go above 32 if power saving mode is off');
   });
 
   it('should have powersave on by default', function() {
