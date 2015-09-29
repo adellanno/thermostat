@@ -19,11 +19,24 @@ describe('Thermostat', function() {
     expect(thermostat.temperature).toEqual(19);
   });
 
-  it('should not allow the temperature to drop below 10 degrees', function() {
+  it('should not allow the temp to drop below 10 degrees', function() {
     for (i = 0; i < 10; i++) {
       thermostat.downButton();
     }
 
     expect(function() {thermostat.downButton();}).toThrow('Too cold!');
+  });
+
+  it('should not allow the temp to go above 25 degrees if power saving mode is on', function() {
+    for (i = 0; i < 5; i++) {
+      thermostat.upButton();
+    }
+
+    thermostat.powerSave();
+    expect(function() {thermostat.upButton();}).toThrow('Too hot!');
+  });
+
+  it('should have powersave on by default', function() {
+    expect(thermostat.powerSave).toEqual('ON');
   });
 });
