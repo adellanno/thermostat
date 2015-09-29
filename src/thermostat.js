@@ -7,5 +7,9 @@ Thermostat.prototype.upButton = function() {
 };
 
 Thermostat.prototype.downButton = function() {
+  if (this.temperature <= 10) {
+    throw 'Too cold!';
+  }
+
   this.temperature -= 1;
 };

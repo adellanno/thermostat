@@ -19,4 +19,11 @@ describe('Thermostat', function() {
     expect(thermostat.temperature).toEqual(19);
   });
 
+  it('should not allow the temperature to drop below 10 degrees', function() {
+    for (i = 0; i < 10; i++) {
+      thermostat.downButton();
+    }
+
+    expect(function() {thermostat.downButton();}).toThrow('Too cold!');
+  });
 });
