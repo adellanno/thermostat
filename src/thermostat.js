@@ -15,7 +15,7 @@ Thermostat.prototype.upButton = function() {
     }
   }
 
-  return this.temperature += 1;
+  this.temperature += 1;
 };
 
 Thermostat.prototype.downButton = function() {
@@ -23,7 +23,7 @@ Thermostat.prototype.downButton = function() {
     throw 'Too cold!';
   }
 
-  return this.temperature -= 1;
+  this.temperature -= 1;
 };
 
 Thermostat.prototype.powerSaveOff = function() {
@@ -32,4 +32,8 @@ Thermostat.prototype.powerSaveOff = function() {
 
 Thermostat.prototype.powerSaveOn = function() {
   return this.powerSave = 'ON';
+};
+
+Thermostat.prototype.resetButton = function() {
+  this.temperature = 20;
 };

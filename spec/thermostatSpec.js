@@ -57,4 +57,9 @@ describe('Thermostat', function() {
     thermostat.powerSaveOn();
     expect(thermostat.powerSave).toEqual('ON');
   });
+
+  it('should reset the temperature to 20 by pressing the reset button', function() {
+    thermostat.resetButton();
+    expect(thermostat.temperature).toEqual(20);
+  });
 });
